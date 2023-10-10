@@ -1030,25 +1030,25 @@ static int BVRecalc(GGadget *g, GEvent *e) {
     void *freetypecontext=NULL;
 
     if ( e->type==et_controlevent && e->u.control.subtype == et_buttonactivate ) {
-	bv = GDrawGetUserData(GGadgetGetWindow(g));
-	BCPreserveState(bv->bc);
-	BCFlattenFloat(bv->bc);
-	freetypecontext = FreeTypeFontContext(bv->bc->sc->parent,bv->bc->sc,NULL,ly_fore);
-	if ( freetypecontext!=NULL ) {
-	    bdfc = SplineCharFreeTypeRasterize(freetypecontext,bv->bc->sc->orig_pos,bv->bdf->pixelsize,72,BDFDepth(bv->bdf));
-	    FreeTypeFreeContext(freetypecontext);
-	} else
-	    bdfc = SplineCharAntiAlias(bv->bc->sc,ly_fore,bv->bdf->pixelsize,(1<<(BDFDepth(bv->bdf)/2)));
-	free(bv->bc->bitmap);
-	bv->bc->bitmap = bdfc->bitmap; bdfc->bitmap = NULL;
-	bv->bc->width = bdfc->width;
-	bv->bc->xmin = bdfc->xmin;
-	bv->bc->xmax = bdfc->xmax;
-	bv->bc->ymin = bdfc->ymin;
-	bv->bc->ymax = bdfc->ymax;
-	bv->bc->bytes_per_line = bdfc->bytes_per_line;
-	BDFCharFree(bdfc);
-	BCCharChangedUpdate(bv->bc);
+      bv = GDrawGetUserData(GGadgetGetWindow(g));
+      BCPreserveState(bv->bc);
+      BCFlattenFloat(bv->bc);
+      freetypecontext = FreeTypeFontContext(bv->bc->sc->parent,bv->bc->sc,NULL,ly_fore);
+      if ( freetypecontext!=NULL ) {
+          bdfc = SplineCharFreeTypeRasterize(freetypecontext,bv->bc->sc->orig_pos,bv->bdf->pixelsize,72,BDFDepth(bv->bdf));
+          FreeTypeFreeContext(freetypecontext);
+      } else
+          bdfc = SplineCharAntiAlias(bv->bc->sc,ly_fore,bv->bdf->pixelsize,(1<<(BDFDepth(bv->bdf)/2)));
+      free(bv->bc->bitmap);
+      bv->bc->bitmap = bdfc->bitmap; bdfc->bitmap = NULL;
+      bv->bc->width = bdfc->width;
+      bv->bc->xmin = bdfc->xmin;
+      bv->bc->xmax = bdfc->xmax;
+      bv->bc->ymin = bdfc->ymin;
+      bv->bc->ymax = bdfc->ymax;
+      bv->bc->bytes_per_line = bdfc->bytes_per_line;
+      BDFCharFree(bdfc);
+      BCCharChangedUpdate(bv->bc);
     }
 return( true );
 }

@@ -47,10 +47,10 @@ build_option(ENABLE_GUI              BOOL ON  "Build FontForge with GUI support"
 build_option(ENABLE_X11              BOOL OFF "Build the GUI using the X backend INSTEAD of the GDK backend" "ENABLE_GUI")
 
 build_option(ENABLE_NATIVE_SCRIPTING BOOL ON  "Enables FontForge's native scripting support")
-build_option(ENABLE_PYTHON_SCRIPTING BOOL ON  "Enables FontForge's Python scripting support")
-build_option(ENABLE_PYTHON_EXTENSION AUTO ON  "Builds the Python models for use with system python")
+build_option(ENABLE_PYTHON_SCRIPTING BOOL OFF  "Enables FontForge's Python scripting support")
+build_option(ENABLE_PYTHON_EXTENSION AUTO OFF  "Builds the Python models for use with system python")
 
-build_option(ENABLE_LIBSPIRO         BOOL ON  "Enables libspiro support")
+build_option(ENABLE_LIBSPIRO         BOOL OFF  "Enables libspiro support")
 build_option(ENABLE_LIBGIF           AUTO ON  "Enables GIF support")
 build_option(ENABLE_LIBJPEG          AUTO ON  "Enables JPEG support")
 build_option(ENABLE_LIBPNG           AUTO ON  "Enables PNG support")
